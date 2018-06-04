@@ -1,0 +1,2 @@
+/Users/burcak/Documents/GitHub/SpatioScholar_Toptasi 2018/Unity_Project/obj/Debug/Assembly-CSharp.csprojResolveAssemblyReference.cache
+/Users/burcak/Documents/GitHub/SpatioScholar_Toptasi 2018/Unity_Project/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
