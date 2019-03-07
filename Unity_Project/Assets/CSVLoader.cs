@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using System.Security.Policy;
+//think this comment is needed because the project has yet to be run on .NET 4.0
+//using System.Security.Policy;
 
 public class CSVLoader : MonoBehaviour {
 	static public List<string> fieldList;

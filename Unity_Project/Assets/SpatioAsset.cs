@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using System.Reflection;
 using System.Security.AccessControl;
-using System.Security.Policy;
+//think this comment is needed because the project has yet to be run on .NET 4.0
+//using System.Security.Policy;
 using UnityEngine.UI;
 public class SpatioAsset : MonoBehaviour {
 	public Vector3 dragStart;
