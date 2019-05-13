@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/example.unity
+- path: Assets/AEW_050219_TimelineTesting.unity
   isLoaded: 1
   isActive: 1
