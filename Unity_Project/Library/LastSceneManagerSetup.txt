@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/AEW_050219_TimelineTesting.unity
+- path: Assets/Scenes/DAH_Tutorial_Template/SScholar_DAH_Tutorial_Template_04.unity
   isLoaded: 1
   isActive: 1

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class SpatioAssetPanel : MonoBehaviour {
 
+    //what is the difference between Image and parentImage
     public Image parentImage;
 	public Image image;
 	// Use this for initialization

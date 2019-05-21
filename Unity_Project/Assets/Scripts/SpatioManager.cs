@@ -83,6 +83,7 @@ public class SpatioManager : MonoBehaviour
 	        changed = true;
 	    }
 
+        //Keydown L - coordinates and location
 		if(Input.GetKeyDown (KeyCode.L))
 		{
             coordText.text = "Coordinates: " + fps.transform.position;

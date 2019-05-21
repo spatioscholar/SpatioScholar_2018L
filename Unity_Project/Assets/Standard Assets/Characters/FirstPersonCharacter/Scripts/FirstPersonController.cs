@@ -222,12 +222,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
+
+            //locks camera control to allow UI specific control, and vice versa
+            //added to first person controller script as it only impacts the FPS controller activity?
             if (Input.GetKeyDown(KeyCode.Escape) && lockCameraDelay <= 0)
             {
                 m_LockedCamera = !m_LockedCamera;
                 m_MouseLook.SetCursorLock(m_LockedCamera);
                 lockCameraDelay = 1.5f;
-
             }
                 
             // normalize input if it exceeds 1 in combined length:

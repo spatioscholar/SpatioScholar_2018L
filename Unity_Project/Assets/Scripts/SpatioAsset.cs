@@ -27,7 +27,7 @@ public class SpatioAsset : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		imagePanel.SetPhoto(photo);
-		infoPanel.SetPhoto (photo);
+		infoPanel.SetPhoto(photo);
 		int imgWidth = image.sprite.texture.width;
 		int imgHeight = image.sprite.texture.height;
 		float ratio = (float)imgHeight / imgWidth;
@@ -52,6 +52,7 @@ public class SpatioAsset : MonoBehaviour {
 	    dragStart = transform.position;
 	}
 
+    //toggles between front and back panels, image and info
 	public void SwitchPanel()
 	{
 		imagePanel.Switch ();
@@ -94,6 +95,7 @@ public class SpatioAsset : MonoBehaviour {
             }
             else if (s == "Description")
             {
+                //need to make the Description field that text goes into scrollable
                 description.text = s + ": " + dict[s];
             }
             else if (s == "Rights")

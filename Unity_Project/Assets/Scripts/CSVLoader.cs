@@ -52,8 +52,10 @@ public class CSVLoader : MonoBehaviour {
 		    }
                 
             //Create a spatioasset and spatiobutton
+            //For storing and displaying Documents
 		    SpatioAsset asset = (SpatioAsset)Instantiate(assetPrefab, Vector3.zero, Quaternion.identity);
 		    SpatioButton button = (SpatioButton) Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity);
+            //assigns the SpatioAsset to be the asset associated with the SpatioButton
 		    button.asset = asset.gameObject;
             RectTransform btnRect = button.GetComponent<RectTransform>();
             btnRect.anchorMin = new Vector2(0.5f, 1.0f);
@@ -61,18 +63,29 @@ public class CSVLoader : MonoBehaviour {
             RectTransform assetRect = asset.GetComponent<RectTransform>();
             assetRect.offsetMax = new Vector2(Screen.height / 2, Screen.width / 2);
 
+            //test to overfill the documents panel
+            //increment i higher than 0 to cheaply duplicate assets and see how the document panel adapts or does not adapt
+            //Panel does not adapt, but rather overfills
+            //needs to be scrollable.....find UI element that will work for that "scrollable rectangle"?
+            for(int i = 0; i < 1; i++)
+            {
+                //Adds the button sprite to the Documents Panel
+                //DocumentsPanel.AddButton(button);
+                //Adds the button sprite to the Documents Panel subobject ScrollPanel - trying to reset the pointer for DocumentsPanel to the ScrollPanel Sub Object
+                DocumentsPanel.AddButton(button);
+                asset.transform.SetParent(UI.transform, false);
+                assetRect.offsetMin = new Vector2((Screen.width - 381) / 2, -(Screen.height + 275) / 2);
+                assetRect.offsetMax = new Vector2((Screen.width + 381) / 2, -(Screen.height - 275) / 2);
+                button.transform.SetParent(DocumentsPanel.transform, false);
+                //Associate them with the UI
+                StartCoroutine(fetchSource(asset, button, csvData["Host"]));
+                //populates the asset fields with the metadata from the csv
+                asset.SetAssetFields(csvData);
+                //asset.gameObject.SetActive(false);
+            }
 
-            DocumentsPanel.AddButton(button);
-            asset.transform.SetParent(UI.transform, false);
-            assetRect.offsetMin = new Vector2((Screen.width - 381) / 2, -(Screen.height + 275) / 2);
-            assetRect.offsetMax = new Vector2((Screen.width + 381) / 2, -(Screen.height - 275) / 2);
-            button.transform.SetParent(DocumentsPanel.transform, false);
-            //Associate them with the UI
-            StartCoroutine(fetchSource(asset, button, csvData["Host"]));
-		    asset.SetAssetFields(csvData);
-            //asset.gameObject.SetActive(false);
-            
-		}
+
+        }
 	}
 
     IEnumerator fetchSource(SpatioAsset asset, SpatioButton button, string source)
