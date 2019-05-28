@@ -13,7 +13,18 @@ public class ViewNotesPanel : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log("ViewNotesPanel Start Called");
+        //loads an instance of the prefab for use
         blurbResource = Resources.Load<GameObject>("Note Blurb");
+        Debug.Log(blurbResource.ToString());
+    }
+
+    void InitNote()
+    {
+
+        //loads an instance of the prefab for use
+        blurbResource = Resources.Load<GameObject>("Note Blurb");
+        Debug.Log(blurbResource.ToString());
     }
 
     // Update is called once per frame
@@ -24,11 +35,17 @@ public class ViewNotesPanel : MonoBehaviour
 
     public void UpdateNotes(JSONNode node, DateTime lastUpdate)
     {
+        if(blurbResource == null)
+        {
+            InitNote();
+        }
+        //Debug.Log("running UpdateNotes");
         int children = canvas.transform.childCount;
         foreach (JSONNode n in node.AsArray)
         {
+            //Debug.Log("running UpdateNotes for each node in the node array "+n);
             DateTime postTime = DateTime.ParseExact(n["posttime"], "yyyy-MM-dd HH:mm:ss", null);
-            Debug.Log("postTime: " + postTime + " lastUpdate: " + lastUpdate);
+            //Debug.Log("postTime: " + postTime + " lastUpdate: " + lastUpdate);
             if (postTime <= lastUpdate)
                 continue;
             GameObject blurb = Instantiate<GameObject>(blurbResource);

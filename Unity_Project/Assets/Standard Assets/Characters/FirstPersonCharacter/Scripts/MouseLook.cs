@@ -82,7 +82,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
 				m_LockWait = 1f;
                 m_cursorIsLocked = !m_cursorIsLocked;
-                Debug.Log("Cursor Lock is: " + m_cursorIsLocked);
+                //cursor lock debug feedback
+                //Debug.Log("Cursor Lock is: " + m_cursorIsLocked);
             }
 
             if (m_cursorIsLocked)

@@ -62,8 +62,10 @@ public class SpatioManager : MonoBehaviour
 
     public void AddNote(string first, string last, string brief, string full, string URL, System.DateTime date, Vector3 location)
     {
+        //calls the method to add the note to the database
         StartCoroutine(database.AddNote(first, last, brief, full, URL, date, location));
     }
+
     // Update is called once per frame
     void Update () 
 	{

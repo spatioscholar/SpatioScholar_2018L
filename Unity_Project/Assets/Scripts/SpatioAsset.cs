@@ -24,11 +24,14 @@ public class SpatioAsset : MonoBehaviour {
     public Text language;
     public Text description;
     public Text rights;
+    public Image infoPanelThumbnail;
+
 	// Use this for initialization
 	void Start () {
 		imagePanel.SetPhoto(photo);
 		infoPanel.SetPhoto(photo);
-		int imgWidth = image.sprite.texture.width;
+        //infoPanel.transform.Find("Image").gameObject.GetComponent<RawImage>().texture = ;
+        int imgWidth = image.sprite.texture.width;
 		int imgHeight = image.sprite.texture.height;
 		float ratio = (float)imgHeight / imgWidth;
 

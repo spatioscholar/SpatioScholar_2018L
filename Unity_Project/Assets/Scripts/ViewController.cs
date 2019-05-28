@@ -21,7 +21,7 @@ public class ViewController : MonoBehaviour {
 
 	public void SwitchView()
 	{
-        Debug.Log("Test");
+        //Debug.Log("Switch View");
 		overhead = !overhead;
 		overheadObject.SetActive (overhead);
 

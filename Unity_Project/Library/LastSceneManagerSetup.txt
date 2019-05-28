@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/DAH_Tutorial_Template/SScholar_DAH_Tutorial_Template_04.unity
+- path: Assets/Scenes/DAH_Tutorial_Template/SScholar_DAH_Tutorial_Template_07.unity
   isLoaded: 1
   isActive: 1

@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class SpatioDocuments : MonoBehaviour {
 
+    public Toggle BlockMasterToggle;
     public Toggle BlockAToggle;
+    public Toggle BlockBToggle;
     public SpatioDocuments DocumentsPanel;
     public GameObject temporaryNull;
 
@@ -25,16 +27,16 @@ public class SpatioDocuments : MonoBehaviour {
     {
         foreach (SpatioButton b in buttons)
         {
-            if (BlockAToggle.isOn == false)
+            if (BlockMasterToggle.isOn == false)
             {
                 //b.gameObject.SetActive(false);
                 //b.transform.SetParent(null, false);
                 b.transform.SetParent(temporaryNull.transform, false);
                 //continue;
             }
-            if (BlockAToggle.isOn == true)
+            if (BlockMasterToggle.isOn == true)
             {
-                Debug.Log(b.ToString());
+                //Debug.Log(b.ToString());
                 //b.gameObject.SetActive(true);
                 b.transform.SetParent(DocumentsPanel.transform, false);
                 //continue;
@@ -42,7 +44,57 @@ public class SpatioDocuments : MonoBehaviour {
         }
         changed = true;
     }
-	
+
+    public void ToggleButtonDisplay(string text)
+    {
+        //Debug.Log("culling method with tag = " + text);
+        foreach (SpatioButton b in buttons)
+        {
+            //Debug.Log(b.asset.GetComponent<SpatioAsset>().title.text.ToString());
+            //Debug.Log(text);
+            if (b.asset.GetComponent<SpatioAsset>().title.text.ToString() != text)
+            {
+
+                //Debug.Log("not the same");
+                //hide object by setting transform to a temporary object (not the panel)
+                b.transform.SetParent(temporaryNull.transform, false);
+                continue;
+            }
+            if (b.asset.GetComponent<SpatioAsset>().title.text.ToString() == text)
+            {
+                //Debug.Log("found a button with the same title as the string passed to this method");
+                //b.gameObject.SetActive(true);
+                b.transform.SetParent(DocumentsPanel.transform, false);
+                continue;
+            }
+        }
+        changed = true;
+    }
+
+    public void ToggleButtonDisplayBlockA()
+    {
+        foreach (SpatioButton b in buttons)
+        {
+            //if (BlockAToggle.isOn == false && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "Block A")
+            if (BlockAToggle.isOn == false && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "Block A")
+            {
+
+                //b.gameObject.SetActive(false);
+                //b.transform.SetParent(null, false);
+                b.transform.SetParent(temporaryNull.transform, false);
+                //continue;
+            }
+            if (BlockAToggle.isOn == true && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "Block A")
+            {
+                //Debug.Log(b.ToString());
+                //b.gameObject.SetActive(true);
+                b.transform.SetParent(DocumentsPanel.transform, false);
+                //continue;
+            }
+        }
+        changed = true;
+    }
+
     //What does this function do? 
     void UpdateButtons()
     {

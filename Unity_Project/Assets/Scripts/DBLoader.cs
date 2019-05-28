@@ -6,11 +6,13 @@ using UnityEngine.UI;
 //think this comment is needed because the project has yet to be run on .NET 4.0
 //using System.Security.Policy;
 using SimpleJSON;
+using UnityEngine.Networking;
 
 public class DBLoader : MonoBehaviour {
 	static public List<string> fieldList;
     public string dbSource;
     DateTime lastUpdate;
+    DateTime mostRecent;
     float updateTimeRemaining;
     public SpatioAsset assetPrefab;
     public SpatioButton buttonPrefab;
@@ -21,7 +23,8 @@ public class DBLoader : MonoBehaviour {
     public Canvas UI;
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(RetrieveNotes());
+        //temporarily commented to debug database coordination
+        //StartCoroutine(RetrieveNotes());
     }
 
     void LoadData (int line_number, List<string> line)
@@ -104,16 +107,33 @@ public class DBLoader : MonoBehaviour {
         WWW site = new WWW(dbSource, form);
         yield return site;
         JSONNode node = JSON.Parse(site.text);
-        Debug.Log(node["data"]["MAX(posttime)"]);
-        DateTime mostRecent = DateTime.ParseExact(node["data"]["MAX(posttime)"], "yyyy-MM-dd HH:mm:ss", null);
-        if (mostRecent > lastUpdate)
+        //Debug.Log("update node = " + node.ToString());
+        //why is this null?
+        //Debug.Log("outputting update node ");
+        //Debug.Log(node[0]["posttime"]);
+        //Debug.Log(node["data"]["MAX(posttime)"]);
+        //Debug.Log(node["MAX(posttime)"]);
+        //DateTime mostRecent = DateTime.ParseExact(node["MAX(posttime)"], "yyyy-MM-dd HH:mm:ss", null);
+        DateTime mostRecent = DateTime.ParseExact(node[0]["posttime"], "yyyy-MM-dd HH:mm:ss", null);
+        //Debug.Log(mostRecent.ToString());
+        //if (mostRecent > lastUpdate)
+        if (mostRecent != lastUpdate)
         {
+            Debug.Log("within most recent test");
             yield return RetrieveNotes();
-            lastUpdate = mostRecent;
+            //lastUpdate = mostRecent;
         }
+        
+
+        //simplifying this to simply RetrieveNotes()
+        //Debug.Log("DBLoader UpdateTime() called");
+        //yield return RetrieveNotes();
     }
+    
     public IEnumerator AddNote(string first, string last, string brief, string full, string URL, System.DateTime date, Vector3 location)
     {
+        Debug.Log("Calling the AddNote WWW FORM Method");
+        //build a form with the data
         WWWForm form = new WWWForm();
         form.AddField("operation", "insert");
         form.AddField("first", first);
@@ -126,23 +146,49 @@ public class DBLoader : MonoBehaviour {
         form.AddField("x", location.x.ToString());
         form.AddField("y", location.y.ToString());
         form.AddField("z", location.z.ToString());
-        WWW site = new WWW(dbSource, form);
-        yield return site;
-        Debug.Log(date.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-        Debug.Log(location.x.ToString());
+        //WWW site = new WWW(dbSource, form);
+        //yield return site;
+        //Debug.Log(site.text);
+
+        //updating to modern code
+        using (UnityWebRequest www = UnityWebRequest.Post(dbSource, form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+        }
+
+        //Debug.Log(date.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+        //Debug.Log(location.x.ToString());
+
         addConfirmation.SetActive(true);
         notesPanel.Clear();
-
     }
+
     public IEnumerator RetrieveNotes()
     {
+        Debug.Log("RetrieveNotes() called");
         WWWForm form = new WWWForm();
         form.AddField("operation", "select");
         WWW site = new WWW(dbSource, form);
         yield return site;
+        //Debug.Log(site.text);
         JSONNode node = JSON.Parse(site.text);
-        viewNotes.UpdateNotes(node["data"], lastUpdate);
+        //Debug.Log("retrieve node = "+node.ToString());
+
+        //Debug.Log(node.ToString());
+        //commenting out the "data" structure. This came from Bo's original PHP script that I lost access to.
+        //viewNotes.UpdateNotes(node["data"], lastUpdate);
+        viewNotes.UpdateNotes(node, lastUpdate);
     }
+
     // Update is called once per frame
     void Update () {
 	    if(updateTimeRemaining > 0)
@@ -151,7 +197,7 @@ public class DBLoader : MonoBehaviour {
         }
         else
         {
-            updateTimeRemaining = 5;
+            updateTimeRemaining = 20;
             StartCoroutine(UpdateTime());
         }
 	}

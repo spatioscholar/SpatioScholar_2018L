@@ -21,7 +21,9 @@ public class CSVLoader : MonoBehaviour {
         //Using a local source
         //TextAsset CSVasset;
         //CSVasset = test;
-        Debug.Log(site.text);       
+
+        //commenting this out, it dumps the contents into the console
+        //Debug.Log(site.text);       
         string CSVText;
         CSVText = site.text;;
         fgCSVReader.LoadFromString(CSVText, LoadData);
