@@ -223,6 +223,29 @@ ModelImporter:
     6400028: Building_018
     6400030: Building_020
     6400032: Building_1
+    6400034: Building_013
+    6400036: Street
+    6400038: Site_002
+    6400040: Site_003
+    6400042: Site_004
+    6400044: Site_005
+    6400046: Site_006
+    6400048: Site_007
+    6400050: Site_008
+    6400052: Site_009
+    6400054: Site_01
+    6400056: Site_010
+    6400058: Site_011
+    6400060: Site_012
+    6400062: Site_013
+    6400064: Site_014
+    6400066: Site_015
+    6400068: Site_016
+    6400070: Site_017
+    6400072: Site_018
+    6400074: Site_019
+    6400076: Site_020
+    6400078: Building_007
     7400000: Take 001
     9500000: //RootNode
     11400000: Building_002
@@ -242,6 +265,29 @@ ModelImporter:
     11400028: Building_018
     11400030: Building_020
     11400032: Building_1
+    11400034: Building_013
+    11400036: Street
+    11400038: Site_002
+    11400040: Site_003
+    11400042: Site_004
+    11400044: Site_005
+    11400046: Site_006
+    11400048: Site_007
+    11400050: Site_008
+    11400052: Site_009
+    11400054: Site_01
+    11400056: Site_010
+    11400058: Site_011
+    11400060: Site_012
+    11400062: Site_013
+    11400064: Site_014
+    11400066: Site_015
+    11400068: Site_016
+    11400070: Site_017
+    11400072: Site_018
+    11400074: Site_019
+    11400076: Site_020
+    11400078: Building_007
   externalObjects: {}
   materials:
     importMaterials: 1
