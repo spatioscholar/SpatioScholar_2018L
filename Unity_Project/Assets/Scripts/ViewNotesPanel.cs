@@ -12,6 +12,7 @@ public class ViewNotesPanel : MonoBehaviour
     GameObject viewportNote;
     //array to hold notes, better to have a flexible system like a dictionary
     public List<NoteObject> NoteList = new List<NoteObject>();
+    //public Dictionary<Note_In_Scene>;
 
     // Use this for initialization
     void Start()
@@ -99,10 +100,14 @@ public class ViewNotesPanel : MonoBehaviour
                     DateTime.ParseExact(n["reftime"], "yyyy-MM-dd HH:mm:ss", null));
 
             //NoteList[children] = new NoteObject((new Vector3(n["x"], n["y"], n["z"])), (n["brief"]));
+
+
+            //Add viewport note in the scene
             GameObject Note = Instantiate<GameObject>(viewportNote);
             Note.transform.position = ((new Vector3(n["x"], n["y"], n["z"])));
             Note.GetComponent<SpatioNote>().brief = (n["brief"]);
-            Debug.Log(Note.GetComponent<SpatioNote>().brief);
+            Note.GetComponent<SpatioNote>().textField.text = (n["brief"]);
+            //Debug.Log(Note.GetComponent<SpatioNote>().brief);
 
             blurb.transform.SetParent(canvas.transform);
             //Debug.Log("yes");

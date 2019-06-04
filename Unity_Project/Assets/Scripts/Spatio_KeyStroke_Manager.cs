@@ -70,7 +70,7 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             //print("space key was pressed");
             if(Instructions.active == false)

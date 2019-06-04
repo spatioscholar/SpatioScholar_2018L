@@ -10,35 +10,101 @@ public class SpatioNote : MonoBehaviour
     public Canvas ui;
     public bool uiVisible = false;
     public GameObject cam;
+    public bool uiGlobalVisible = false;
+    public ViewController vcontroller;
+    public GameObject manager;
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.Find("Camera");
+        //Assign ViewController object
+        manager = GameObject.Find("SpatioManager");
+        vcontroller = manager.GetComponent<ViewController>();
+    }
+
+    void CheckActiveCamera()
+    {
+        //if Overhead variable in the viewcontroller overhead value is set to true
+        if(vcontroller.overhead == true)
+        {
+            cam = vcontroller.overheadObject;
+        }
+        else
+        {
+            cam = vcontroller.FPSObject;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //CheckActiveCamera method called to 
+        CheckActiveCamera();
+        //within this block call a method to constantly reorient each note to face the "active" camera
+        //Check which camera is "active" meaning either overhead or fps
+        transform.LookAt(cam.transform);
+        this.transform.Rotate(0,180,0);
+
+        if(uiGlobalVisible == true && uiVisible == false)
+        {
+            ui.gameObject.SetActive(true);
+            uiVisible = true;
+        }
+        else
+        {
+            return;
+        }
     }
 
     void OnMouseEnter()
     {
-        if(uiVisible == true)
+        Debug.Log("OnMouseEnter");
+        if (uiVisible == true)
         {
             return;
         }
         if(uiVisible == false)
         {
-            ui.transform.LookAt(cam.transform);
             ui.gameObject.SetActive(true);
+            uiVisible = true;
             return;
         }
     }
-    void OnMouseClick()
+    void OnMouseExit()
     {
-        ui.gameObject.SetActive(false);
-        uiVisible = false;
+        Debug.Log("OnMouseExit");
+        if (uiVisible == true && uiGlobalVisible == false)
+        {
+            ui.gameObject.SetActive(false);
+            uiVisible = false;
+            return;
+        }
+        if (uiGlobalVisible == true)
+        {
+            ui.gameObject.SetActive(true);
+            uiVisible = true;
+            return;
+        }
+    }
+    void SetOngoingVisible(bool input)
+    {
+        Debug.Log("SetOngoingVisible = " + input);
+        uiGlobalVisible = input;
+    }
+    void OnMouseDown()
+    {
+        Debug.Log("OnMouseDown");
+        if (uiGlobalVisible == false)
+        {
+            SetOngoingVisible(true);
+
+            uiVisible = true;
+        }
+        else
+        {
+            SetOngoingVisible(false);
+
+            uiVisible = false;
+        }
     }
 }
