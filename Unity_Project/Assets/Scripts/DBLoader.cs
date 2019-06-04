@@ -21,8 +21,8 @@ public class DBLoader : MonoBehaviour {
     public GameObject addConfirmation;
     public ViewNotesPanel viewNotes;
     public Canvas UI;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         //temporarily commented to debug database coordination
         //StartCoroutine(RetrieveNotes());
     }
@@ -114,12 +114,19 @@ public class DBLoader : MonoBehaviour {
         //Debug.Log(node["data"]["MAX(posttime)"]);
         //Debug.Log(node["MAX(posttime)"]);
         //DateTime mostRecent = DateTime.ParseExact(node["MAX(posttime)"], "yyyy-MM-dd HH:mm:ss", null);
-        DateTime mostRecent = DateTime.ParseExact(node[0]["posttime"], "yyyy-MM-dd HH:mm:ss", null);
-        //Debug.Log(mostRecent.ToString());
-        //if (mostRecent > lastUpdate)
-        if (mostRecent != lastUpdate)
+
+        //Debug.Log("node.Count = " + node.Count);
+        for (int i = 0; i < node.Count; i++)
         {
-            Debug.Log("within most recent test");
+            mostRecent = DateTime.ParseExact(node[i]["posttime"], "yyyy-MM-dd HH:mm:ss", null);
+            //gets the most recent post time in the database
+        }
+        //Debug.Log(mostRecent.ToString());
+        //if the latest post is newer than the last update post time.....then RetrieveNotes
+        if (mostRecent > lastUpdate)
+        //if (mostRecent != lastUpdate)
+        {
+            Debug.Log(mostRecent+ " is larger than " + lastUpdate);
             yield return RetrieveNotes();
             //lastUpdate = mostRecent;
         }
@@ -150,7 +157,7 @@ public class DBLoader : MonoBehaviour {
         //yield return site;
         //Debug.Log(site.text);
 
-        //updating to modern code
+        //updating away from WWW form towards UnityWebRequest
         using (UnityWebRequest www = UnityWebRequest.Post(dbSource, form))
         {
             yield return www.SendWebRequest();
@@ -172,9 +179,10 @@ public class DBLoader : MonoBehaviour {
         notesPanel.Clear();
     }
 
+    //hits the php and database for a full set of notes, the contents of the database
     public IEnumerator RetrieveNotes()
     {
-        Debug.Log("RetrieveNotes() called");
+        //Debug.Log("RetrieveNotes() called");
         WWWForm form = new WWWForm();
         form.AddField("operation", "select");
         WWW site = new WWW(dbSource, form);
@@ -186,7 +194,28 @@ public class DBLoader : MonoBehaviour {
         //Debug.Log(node.ToString());
         //commenting out the "data" structure. This came from Bo's original PHP script that I lost access to.
         //viewNotes.UpdateNotes(node["data"], lastUpdate);
+        for (int i = 0; i < node.Count; i++)
+        {
+            //the latest note retrieved has it's post time saved into lastUpdate
+            lastUpdate = DateTime.ParseExact(node[i]["posttime"], "yyyy-MM-dd HH:mm:ss", null);
+        }
+        //Debug.Log("LastUpdate = " + lastUpdate);
         viewNotes.UpdateNotes(node, lastUpdate);
+    }
+
+    void DrawNotesInModel()
+    {
+        //Define the NoteMarker GameObject for use
+        GameObject NoteMarker = new GameObject();
+        //clear ViewNotesPanel
+        //refresh notes in ViewNotesPanel
+        //for each note - instantiate a Notes Node in the X Y Z location
+        
+        //loads an instance of the prefab for use
+        NoteMarker = Resources.Load<GameObject>("Note_In_Scene");
+        GameObject viewNote = Instantiate<GameObject>(NoteMarker);
+        viewNote.transform.position = new Vector3(0, 0, 0);
+        //viewNote.full = "Test text for visible markers";
     }
 
     // Update is called once per frame
@@ -201,4 +230,24 @@ public class DBLoader : MonoBehaviour {
             StartCoroutine(UpdateTime());
         }
 	}
+}
+
+//This object class is new as of May/June 2019
+//Each note should be derived from this object and stored in a single central location
+//This will allow for more robust
+public class NoteObject : MonoBehaviour
+{
+    public string full;
+    public string brief;
+    public DateTime posttime;
+    public DateTime reftime;
+    public string last;
+    public string first;
+    public Vector3 location;
+
+    public NoteObject(Vector3 A, string B)
+    {
+        location = A;
+        brief = B;
+    }
 }

@@ -23,6 +23,8 @@ public class NotesPanel : MonoBehaviour {
     public InputField zField;
     public Text posttimeText;
     SpatioManager manager;
+    public Vector3 PickLocation;
+    GameObject viewportLocation;
 
     // Use this for initialization
     void Start () {
@@ -59,6 +61,76 @@ public class NotesPanel : MonoBehaviour {
         Vector3 location = new Vector3(float.Parse(xField.text), float.Parse(yField.text), float.Parse(zField.text));
         manager.AddNote(firstField.text, lastField.text, briefField.text, 
                         fullField.text, URLField.text, date, location);
+    }
+
+    public void NoteLocation()
+    {
+        //raycast a location
+        //wait for a mouse click
+        //raycast coordinates from that location
+        //put that location back into the Add Notes Fields
+    }
+    private bool isRunning = false;
+    public void Wrapper()
+    {
+        if (isRunning == false)
+        {
+            StartCoroutine(WaitForLocationPick());
+        }
+    }
+
+    IEnumerator WaitForLocationPick()
+    {
+        isRunning = true;
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit = new RaycastHit();
+
+                if (view.overhead)
+                {
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+                    {
+                        //PickLocation = hit.transform.position;
+                        Debug.Log("I hit you");
+                        //xField.text = "" + hit.transform.position.x;
+                        //yField.text = "" + hit.transform.position.y;
+                        //zField.text = "" + hit.transform.position.z;
+                        xField.text = "" + hit.point.x;
+                        yField.text = "" + hit.point.y;
+                        zField.text = "" + hit.point.z;
+                        Debug.Log("yield break");
+                        isRunning = false;
+                        viewportLocation = Resources.Load<GameObject>("Note_In_Scene");
+                        GameObject LocationMarker = Instantiate<GameObject>(viewportLocation);
+                        LocationMarker.transform.position = hit.point;
+                        yield break;
+                    }
+                }
+                else
+                {
+                    if (Physics.Raycast(fpsController.GetComponentInChildren<Camera>().ScreenPointToRay(Input.mousePosition), out hit))
+                    {
+                        //PickLocation = hit.transform.position;
+                        Debug.Log("I hit you");
+                        xField.text = "" + hit.point.x;
+                        yField.text = "" + hit.point.y;
+                        zField.text = "" + hit.point.z;
+                        Debug.Log("yield break");
+                        isRunning = false;
+                        viewportLocation = Resources.Load<GameObject>("Note_In_Scene");
+                        GameObject LocationMarker = Instantiate<GameObject>(viewportLocation);
+                        LocationMarker.transform.position = hit.point;
+                        yield break;
+                    }
+                }
+                
+            }
+            Debug.Log("yield return null");
+            yield return null;
+        }
+        //not here yield return null;
     }
 
     public void UpdateLocation()

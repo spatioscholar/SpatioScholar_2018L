@@ -22,9 +22,13 @@ public class SpatioDocuments : MonoBehaviour {
         if (buttons == null)
             buttons = new List<SpatioButton>();
     }
-
+    
     public void ToggleButtonDisplay()
     {
+        if(BlockMasterToggle.isOn == false)
+        {
+            return;
+        }
         foreach (SpatioButton b in buttons)
         {
             if (BlockMasterToggle.isOn == false)
@@ -44,6 +48,7 @@ public class SpatioDocuments : MonoBehaviour {
         }
         changed = true;
     }
+    
 
     public void ToggleButtonDisplay(string text)
     {
@@ -52,31 +57,33 @@ public class SpatioDocuments : MonoBehaviour {
         {
             //Debug.Log(b.asset.GetComponent<SpatioAsset>().title.text.ToString());
             //Debug.Log(text);
-            if (b.asset.GetComponent<SpatioAsset>().title.text.ToString() != text)
+            if (b.asset.GetComponent<SpatioAsset>().title.text.ToString() != ("Block " + text))
             {
-
                 //Debug.Log("not the same");
                 //hide object by setting transform to a temporary object (not the panel)
                 b.transform.SetParent(temporaryNull.transform, false);
                 continue;
             }
-            if (b.asset.GetComponent<SpatioAsset>().title.text.ToString() == text)
+            if (b.asset.GetComponent<SpatioAsset>().title.text.ToString() == ("Block " + text))
             {
-                //Debug.Log("found a button with the same title as the string passed to this method");
+                //Debug.Log("found a button with the same title as the string passed to this method "+ ("Block " + text));
                 //b.gameObject.SetActive(true);
                 b.transform.SetParent(DocumentsPanel.transform, false);
                 continue;
             }
         }
         changed = true;
+        //set the checkbox for all Blocks false
+        BlockMasterToggle.isOn = false;
     }
 
+    /*
     public void ToggleButtonDisplayBlockA()
     {
         foreach (SpatioButton b in buttons)
         {
             //if (BlockAToggle.isOn == false && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "Block A")
-            if (BlockAToggle.isOn == false && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "Block A")
+            if (BlockAToggle.isOn == false && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "A")
             {
 
                 //b.gameObject.SetActive(false);
@@ -84,7 +91,7 @@ public class SpatioDocuments : MonoBehaviour {
                 b.transform.SetParent(temporaryNull.transform, false);
                 //continue;
             }
-            if (BlockAToggle.isOn == true && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "Block A")
+            if (BlockAToggle.isOn == true && b.asset.GetComponent<SpatioAsset>().title.text.ToString() == "A")
             {
                 //Debug.Log(b.ToString());
                 //b.gameObject.SetActive(true);
@@ -94,6 +101,7 @@ public class SpatioDocuments : MonoBehaviour {
         }
         changed = true;
     }
+    */
 
     //What does this function do? 
     void UpdateButtons()

@@ -567,7 +567,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &64214534
 MeshCollider:
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &127120532
 MeshCollider:
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &135567690
 MeshCollider:
@@ -1928,7 +1928,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &229655209
 MeshCollider:
@@ -1974,7 +1974,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &245189090
 MeshCollider:
@@ -2178,7 +2178,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &309645382
 MeshCollider:
@@ -2765,6 +2765,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407321323}
   m_CullTransparentMesh: 0
+--- !u!1 &445727664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445727665}
+  - component: {fileID: 445727668}
+  - component: {fileID: 445727667}
+  - component: {fileID: 445727666}
+  m_Layer: 0
+  m_Name: Show Notes in Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &445727665
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445727664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 539985965}
+  m_Father: {fileID: 1093955030}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -10, y: -194.7}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &445727666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445727664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 445727667}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1804416517}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &445727667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445727664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300090, guid: 148a7416d4c344a42bb28cb23ee31708, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &445727668
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445727664}
+  m_CullTransparentMesh: 0
 --- !u!1 &446742973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: 66b5bf8e93fe5fe4790ff1386331324e,
@@ -2795,7 +2924,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &446742978
 MeshCollider:
@@ -2841,7 +2970,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &455721452
 MeshCollider:
@@ -2966,7 +3095,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &462824813
 MeshCollider:
@@ -3012,7 +3141,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &470002467
 MeshCollider:
@@ -3739,6 +3868,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538907889}
   m_CullTransparentMesh: 0
+--- !u!1 &539985964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 539985965}
+  - component: {fileID: 539985967}
+  - component: {fileID: 539985966}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &539985965
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539985964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 445727665}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &539985966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539985964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Show Notes in Model
+--- !u!222 &539985967
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539985964}
+  m_CullTransparentMesh: 0
 --- !u!1 &571269881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4062,7 +4270,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &601950800
 MeshCollider:
@@ -4108,7 +4316,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &605348933
 MeshCollider:
@@ -4684,6 +4892,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1749297960}
+  - {fileID: 1287279954}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4717,7 +4926,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &730117196
 MeshCollider:
@@ -5027,7 +5236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000030860447}
+  m_AnchoredPosition: {x: 0, y: 0.000045513545}
   m_SizeDelta: {x: 200, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752715998
@@ -5155,8 +5364,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 752715998}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5562,11 +5771,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   date:
-    Year: 1950
+    Year: 1800
     Month: 1
     Day: 1
   start:
-    Year: 1950
+    Year: 1800
     Month: 1
     Day: 1
   end:
@@ -5606,7 +5815,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &800408448
 MeshCollider:
@@ -5652,7 +5861,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &807108268
 MeshCollider:
@@ -5777,7 +5986,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &835962489
 MeshCollider:
@@ -7146,7 +7355,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &1010666376
 MeshCollider:
@@ -7970,7 +8179,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: C
   hidden: 0
 --- !u!64 &1084750527
 MeshCollider:
@@ -8016,7 +8225,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1087304441
 MeshCollider:
@@ -8131,6 +8340,7 @@ RectTransform:
   - {fileID: 1451762443}
   - {fileID: 169138298}
   - {fileID: 1716246807}
+  - {fileID: 445727665}
   m_Father: {fileID: 46351416}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8324,7 +8534,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block B
+  block: B
   hidden: 0
 --- !u!64 &1118794747
 MeshCollider:
@@ -8786,7 +8996,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1183931001
 MeshCollider:
@@ -9559,6 +9769,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285794182}
   m_CullTransparentMesh: 0
+--- !u!1001 &1287279953
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 725374649}
+    m_Modifications:
+    - target: {fileID: 100040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_Name
+      value: Schematic_Model_WithDates
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.39
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f5cf3217783fe04a9ecac4dca904d94, type: 3}
+--- !u!4 &1287279954 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400040, guid: 9f5cf3217783fe04a9ecac4dca904d94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1287279953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287631264 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100064, guid: 66b5bf8e93fe5fe4790ff1386331324e,
@@ -9589,7 +9878,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1287631269
 MeshCollider:
@@ -9635,7 +9924,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &1301440867
 MeshCollider:
@@ -9681,7 +9970,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1305445783
 MeshCollider:
@@ -9862,7 +10151,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1338254075
 MeshCollider:
@@ -9908,7 +10197,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &1343160710
 MeshCollider:
@@ -10247,13 +10536,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 210526372}
-  distance: 45
-  xSpeed: 20
-  ySpeed: 20
-  yMinLimit: 1
+  distance: 60
+  xSpeed: 30
+  ySpeed: 30
+  yMinLimit: 5
   yMaxLimit: 60
-  distanceMin: 5
-  distanceMax: 50
+  distanceMin: 10
+  distanceMax: 80
 --- !u!1 &1361105153
 GameObject:
   m_ObjectHideFlags: 0
@@ -10616,7 +10905,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &1382546444
 MeshCollider:
@@ -11919,7 +12208,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &1492067242
 MeshCollider:
@@ -12235,7 +12524,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1523290187
 MeshCollider:
@@ -12659,7 +12948,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1575319313
 MeshCollider:
@@ -13133,7 +13422,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1643925455
 MeshCollider:
@@ -13884,6 +14173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Schematic_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: 66b5bf8e93fe5fe4790ff1386331324e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: 66b5bf8e93fe5fe4790ff1386331324e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13966,7 +14259,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!1 &1755014224
 GameObject:
@@ -14077,7 +14370,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1769574935
 MeshCollider:
@@ -14283,7 +14576,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1802475027
 MeshCollider:
@@ -14506,7 +14799,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1818814279
 MeshCollider:
@@ -14807,7 +15100,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &1837521804
 MeshCollider:
@@ -14944,7 +15237,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: B
   hidden: 0
 --- !u!64 &1851866379
 MeshCollider:
@@ -14990,7 +15283,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &1873716615
 MeshCollider:
@@ -15214,7 +15507,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &1882263269
 MeshCollider:
@@ -15309,6 +15602,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940976119}
   m_CullTransparentMesh: 0
+--- !u!1 &1947653712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100040, guid: 9f5cf3217783fe04a9ecac4dca904d94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1287279953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1947653713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947653712}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5805543708f66a43b8a0e90c4eb097c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start:
+    Year: 800
+    Month: 1
+    Day: 1
+  end:
+    Year: 1914
+    Month: 1
+    Day: 1
+  Anchor: {x: 0, y: 0, z: 0}
+  Description: 
+  opacity: 0
+  tags: []
+  block: A
+  hidden: 0
 --- !u!1 &1968286093
 GameObject:
   m_ObjectHideFlags: 0
@@ -16211,7 +16536,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &2071672704
 MeshCollider:
@@ -16334,7 +16659,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: 
   hidden: 0
 --- !u!64 &2077018761
 MeshCollider:
@@ -16723,7 +17048,7 @@ MonoBehaviour:
   Description: 
   opacity: 0
   tags: []
-  block: Block A
+  block: A
   hidden: 0
 --- !u!64 &2122753473
 MeshCollider:
