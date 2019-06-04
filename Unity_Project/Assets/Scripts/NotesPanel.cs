@@ -25,16 +25,31 @@ public class NotesPanel : MonoBehaviour {
     SpatioManager manager;
     public Vector3 PickLocation;
     GameObject viewportLocation;
+    int eraseCounter = 0;
+    GameObject LocationMarker;
 
     // Use this for initialization
     void Start () {
+        //assign the SpatioManager automatically for system level method calls
         manager = FindObjectOfType<SpatioManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+   
+        if (eraseCounter == 10)
+        {
+            eraseCounter = 0;
+            try {
+                LocationMarker = null;
+            }
+            catch
+            {
+
+            }
+        }
+        eraseCounter++;
+   	}
 
     public void BeginDrag()
     {
@@ -47,6 +62,7 @@ public class NotesPanel : MonoBehaviour {
         transform.position = dragStart + Input.mousePosition - mouseStart;
     }
 
+    //this calls the routine that adds a new note to the database through the SpatioManager
     public void AddNote()
     {
         
@@ -93,14 +109,14 @@ public class NotesPanel : MonoBehaviour {
                     if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
                     {
                         //PickLocation = hit.transform.position;
-                        Debug.Log("I hit you");
+                        //Debug.Log("I hit you");
                         //xField.text = "" + hit.transform.position.x;
                         //yField.text = "" + hit.transform.position.y;
                         //zField.text = "" + hit.transform.position.z;
                         xField.text = "" + hit.point.x;
                         yField.text = "" + hit.point.y;
                         zField.text = "" + hit.point.z;
-                        Debug.Log("yield break");
+                        //Debug.Log("yield break");
                         isRunning = false;
                         viewportLocation = Resources.Load<GameObject>("Note_In_Scene");
                         GameObject LocationMarker = Instantiate<GameObject>(viewportLocation);
@@ -113,14 +129,14 @@ public class NotesPanel : MonoBehaviour {
                     if (Physics.Raycast(fpsController.GetComponentInChildren<Camera>().ScreenPointToRay(Input.mousePosition), out hit))
                     {
                         //PickLocation = hit.transform.position;
-                        Debug.Log("I hit you");
+                        //Debug.Log("I hit you");
                         xField.text = "" + hit.point.x;
                         yField.text = "" + hit.point.y;
                         zField.text = "" + hit.point.z;
-                        Debug.Log("yield break");
+                        //Debug.Log("yield break");
                         isRunning = false;
                         viewportLocation = Resources.Load<GameObject>("Note_In_Scene");
-                        GameObject LocationMarker = Instantiate<GameObject>(viewportLocation);
+                        LocationMarker = Instantiate<GameObject>(viewportLocation);
                         LocationMarker.transform.position = hit.point;
                         yield break;
                     }
@@ -153,7 +169,7 @@ public class NotesPanel : MonoBehaviour {
                string full, string url, Vector3 loc,
                System.DateTime post, System.DateTime refDate)
     {
-        Debug.Log("Test!!!2");
+        //Debug.Log("Test!!!2");
 
         firstField.interactable = true;
         firstField.text = first;
@@ -169,7 +185,7 @@ public class NotesPanel : MonoBehaviour {
         xField.text = "" + loc.x;
         yField.text = "" + loc.y;
         zField.text = "" + loc.z;
-        Debug.Log("Test!!!3");
+        //Debug.Log("Test!!!3");
         if (posttimeText)
             posttimeText.text = post.ToString("HH:mm:ss.fff dd/MM/yyyy");
     }

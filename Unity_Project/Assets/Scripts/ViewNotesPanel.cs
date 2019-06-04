@@ -12,11 +12,18 @@ public class ViewNotesPanel : MonoBehaviour
     GameObject viewportNote;
     //array to hold notes, better to have a flexible system like a dictionary
     public List<NoteObject> NoteList = new List<NoteObject>();
-    //public Dictionary<Note_In_Scene>;
+    public List<GameObject> VisibleNoteObjects;
+    public bool NoteVisibility = false;
+    public DBLoader dbloader;
+    public GameObject manager;
 
     // Use this for initialization
     void Start()
     {
+        Debug.Log("running start routine for ViewNotesPanel");
+        //Assign ViewController object
+        manager = GameObject.Find("SpatioManager");
+        dbloader = manager.GetComponent<DBLoader>();
     }
 
     void InitNote()
@@ -31,17 +38,44 @@ public class ViewNotesPanel : MonoBehaviour
             viewportNote = Resources.Load<GameObject>("Note_In_Scene");
         }
     }
+
+    public void ToggleNoteVisibility()
+    {
+        Debug.Log("ToggleNoteVisibility method called");
+        if(NoteVisibility == false)
+        {
+            ShowNotesInViewport();
+            return;
+        }
+        if (NoteVisibility == true)
+        {
+            HideNotesInViewport();
+            return;
+        }
+    }
     //This method should be called to turn "on" the display of notes
     //Currently the notes are visible as they are downloaded from the database
     //This is a limiting feature
     public void ShowNotesInViewport()
     {
-       
+        Debug.Log("ShowNotesInViewport method called");
+        //turn on all notes
+        for (int i = 0; i < VisibleNoteObjects.Count; i++)
+        {
+            VisibleNoteObjects[i].SetActive(true);
+        }
+        NoteVisibility = true;
     }
     //This method should be called to turn "off" the display of notes
     public void HideNotesInViewport()
     {
-
+        Debug.Log("HideNotesInViewport method called");
+        //turn off all notes
+        for (int i = 0; i < VisibleNoteObjects.Count; i++)
+        {
+            VisibleNoteObjects[i].SetActive(false);
+        }
+        NoteVisibility = false;
     }
     //This is used to remove the notes, through a less than perfect method based on their existing only as elements in the UI of the ViewNotes Panel
     void ClearNotes()
@@ -69,9 +103,23 @@ public class ViewNotesPanel : MonoBehaviour
         }
     }
 
+    //making this method to tie button commands to push new updates of the notes
+    public void CallUpdateNotes()
+    {
+        if(dbloader == null)
+        {
+            Debug.Log("CallUpdateNotes");
+            //Assign ViewController object
+            manager = GameObject.Find("SpatioManager");
+            dbloader = manager.GetComponent<DBLoader>();
+        }
+        dbloader.StartNoteDownload();
+    }
+
     //called from DBLoader to update the contents of this panel
     public void UpdateNotes(JSONNode node, DateTime lastUpdate)
     {
+        int NoteCount = 0;
         //runs the init command
         InitNote();
         
@@ -107,7 +155,10 @@ public class ViewNotesPanel : MonoBehaviour
             Note.transform.position = ((new Vector3(n["x"], n["y"], n["z"])));
             Note.GetComponent<SpatioNote>().brief = (n["brief"]);
             Note.GetComponent<SpatioNote>().textField.text = (n["brief"]);
-            //Debug.Log(Note.GetComponent<SpatioNote>().brief);
+            //Debug.Log("adding the latest visual note object to the VisibleNoteObjects List");
+            VisibleNoteObjects.Add(Note);
+            NoteCount++;
+            //Debug.Log("added note" + Note.GetComponent<SpatioNote>().brief);
 
             blurb.transform.SetParent(canvas.transform);
             //Debug.Log("yes");

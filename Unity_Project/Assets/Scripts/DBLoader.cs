@@ -203,6 +203,7 @@ public class DBLoader : MonoBehaviour {
         viewNotes.UpdateNotes(node, lastUpdate);
     }
 
+    /*
     void DrawNotesInModel()
     {
         //Define the NoteMarker GameObject for use
@@ -217,6 +218,7 @@ public class DBLoader : MonoBehaviour {
         viewNote.transform.position = new Vector3(0, 0, 0);
         //viewNote.full = "Test text for visible markers";
     }
+    */
 
     // Update is called once per frame
     void Update () {
@@ -227,10 +229,18 @@ public class DBLoader : MonoBehaviour {
         else
         {
             updateTimeRemaining = 20;
-            StartCoroutine(UpdateTime());
+            //StartCoroutine(UpdateTime());
+            StartNoteDownload();
         }
 	}
+
+    public void StartNoteDownload()
+    {
+        StartCoroutine(UpdateTime());
+    }
 }
+
+
 
 //This object class is new as of May/June 2019
 //Each note should be derived from this object and stored in a single central location

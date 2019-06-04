@@ -13,6 +13,8 @@ public class SpatioNote : MonoBehaviour
     public bool uiGlobalVisible = false;
     public ViewController vcontroller;
     public GameObject manager;
+    int MouseDownCounter = 0;
+    public GameObject viewNotePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -99,18 +101,29 @@ public class SpatioNote : MonoBehaviour
     }
     void OnMouseDown()
     {
-        Debug.Log("OnMouseDown");
+        
+        if(viewNotePanel == null)
+        {
+            GameObject uiPlaceholder = manager.transform.Find("UI").gameObject;
+
+            viewNotePanel = uiPlaceholder.transform.Find("View Note").gameObject;
+            viewNotePanel.SetActive(true);
+        }
+        
+        viewNotePanel.SetActive(true);
+        //ok, but now this window needs to be populated with the correct information.
+
+        //Debug.Log("OnMouseDown");
         if (uiGlobalVisible == false)
         {
             SetOngoingVisible(true);
-
             uiVisible = true;
         }
         else
         {
             SetOngoingVisible(false);
-
             uiVisible = false;
         }
+
     }
 }

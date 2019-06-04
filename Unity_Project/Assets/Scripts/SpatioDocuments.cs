@@ -50,11 +50,11 @@ public class SpatioDocuments : MonoBehaviour {
 
     public void ResetDocumentsToVisible()
     {
-        Debug.Log("called");
+        //Debug.Log("called");
         BlockMasterToggle.isOn = true;
         foreach (SpatioButton b in buttons)
         {
-            Debug.Log("iterating through buttons to reset");
+            //Debug.Log("iterating through buttons to reset");
             b.transform.SetParent(DocumentsPanel.transform, false);
         }
     }
@@ -73,7 +73,7 @@ public class SpatioDocuments : MonoBehaviour {
             //Debug.Log("Found Block Title = "+foundBlock);
             if ((foundBlock == text) || (foundBlock == ("Block " + text)))
             {
-                Debug.Log("found a button with the same title");
+                //Debug.Log("found a button with the same title");
                 b.transform.SetParent(DocumentsPanel.transform, false);
                 continue;
             }
