@@ -29,10 +29,12 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
         {
             //Debug.Log("swapping Materials");
             oldMaterial = model.GetComponent<Renderer>().material;
+            //set the models material to the proper swapMaterial
             model.GetComponent<Renderer>().material = swapMaterial;
             //set the marker of current highlight active
             highlightObject = model;
             highlightActive = true;
+            return;
         }
         if(highlightActive == true)
         {
@@ -41,11 +43,14 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
                 //do nothing because the model already highlighted is the model to be highlighted
                 //actually this should run a remove Highlight and restore all documents
                 RemoveHighlight(highlightObject);
+                DocumentsPanel.ResetDocumentsToVisible();
+                return;
             }
             if (highlightObject != model)
             {
                 //Debug.Log("New model needs highlight");
                 RemoveHighlight(highlightObject);
+                DocumentsPanel.ResetDocumentsToVisible();
                 AddHighlight(model);
             }
         }
@@ -65,6 +70,7 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
         */
         model.GetComponent<Renderer>().material = oldMaterial;
         highlightActive = false;
+        highlightObject = null;
     }
 
 
@@ -73,7 +79,6 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {
-            //print("space key was pressed");
             if(Instructions.active == false)
             {
                 Instructions.SetActive(true);
@@ -86,9 +91,11 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
             //Hide both UI tabs?
             //show Instructions Panel
         }
+
+        //for highlighting objects and using their block value to cull the documents
         if (Input.GetKeyDown("a"))
         {
-            //print("a key was pressed");
+            //Debug.Log("a key was pressed");
             //send a ray from the camera to the current mouse cursor
             RaycastHit hit;
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -99,11 +106,25 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
                 //set material to outline
                 AddHighlight(objectHit.gameObject);
 
-                //then wait for a click to actually change the panel
-                //Debug.Log(objectHit.ToString());
-                string BlockNumber = objectHit.GetComponent<SpatioModel>().block.ToString();
-                Debug.Log(BlockNumber);
-                DocumentsPanel.GetComponent<SpatioDocuments>().ToggleButtonDisplay(BlockNumber);
+                if(highlightObject == hit.collider.gameObject)
+                {
+                    //then wait for a click to actually change the panel
+                    //Debug.Log(objectHit.ToString());
+                    try
+                    {
+                        string BlockNumber = objectHit.GetComponent<SpatioModel>().block.ToString();
+                        //Debug.Log(BlockNumber);
+                        DocumentsPanel.GetComponent<SpatioDocuments>().ToggleButtonDisplay(BlockNumber);
+
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
+                
+                return;
             }
             //query the result
             //send the result to the block documents

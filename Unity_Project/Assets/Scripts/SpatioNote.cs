@@ -58,7 +58,7 @@ public class SpatioNote : MonoBehaviour
 
     void OnMouseEnter()
     {
-        Debug.Log("OnMouseEnter");
+        //Debug.Log("OnMouseEnter");
         if (uiVisible == true)
         {
             return;
@@ -72,7 +72,7 @@ public class SpatioNote : MonoBehaviour
     }
     void OnMouseExit()
     {
-        Debug.Log("OnMouseExit");
+        //Debug.Log("OnMouseExit");
         if (uiVisible == true && uiGlobalVisible == false)
         {
             ui.gameObject.SetActive(false);
@@ -85,10 +85,16 @@ public class SpatioNote : MonoBehaviour
             uiVisible = true;
             return;
         }
+        if (uiGlobalVisible == false)
+        {
+            ui.gameObject.SetActive(false);
+            uiVisible = false;
+            return;
+        }
     }
     void SetOngoingVisible(bool input)
     {
-        Debug.Log("SetOngoingVisible = " + input);
+        //Debug.Log("SetOngoingVisible = " + input);
         uiGlobalVisible = input;
     }
     void OnMouseDown()
