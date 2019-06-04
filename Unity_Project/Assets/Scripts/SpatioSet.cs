@@ -64,10 +64,12 @@ public class SpatioSet : MonoBehaviour {
         if ((int)slider.value != Year)
         {
             SwitchTo((int)slider.value);
+            /*
             if (Year != manager.date.Year)
             {
                 manager.setVaries(true);
             }
+            */
         }
 
     }

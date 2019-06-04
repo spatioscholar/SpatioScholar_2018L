@@ -39,10 +39,11 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
             if(highlightObject == model)
             {
                 //do nothing because the model already highlighted is the model to be highlighted
+                //actually this should run a remove Highlight and restore all documents
+                RemoveHighlight(highlightObject);
             }
             if (highlightObject != model)
             {
-
                 //Debug.Log("New model needs highlight");
                 RemoveHighlight(highlightObject);
                 AddHighlight(model);
@@ -101,7 +102,7 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
                 //then wait for a click to actually change the panel
                 //Debug.Log(objectHit.ToString());
                 string BlockNumber = objectHit.GetComponent<SpatioModel>().block.ToString();
-                //Debug.Log(BlockNumber);
+                Debug.Log(BlockNumber);
                 DocumentsPanel.GetComponent<SpatioDocuments>().ToggleButtonDisplay(BlockNumber);
             }
             //query the result
