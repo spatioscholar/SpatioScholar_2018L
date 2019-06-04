@@ -22,9 +22,9 @@ MonoBehaviour:
     width: 1920
     height: 947
   m_MinSize: {x: 681, y: 498}
-  m_MaxSize: {x: 14004, y: 14048}
+  m_MaxSize: {x: 14002, y: 14048}
   vertical: 0
-  controlID: 875
+  controlID: 2284
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -126,10 +126,10 @@ MonoBehaviour:
     y: 0
     width: 1236
     height: 947
-  m_MinSize: {x: 404, y: 498}
+  m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 851
+  controlID: 2285
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,10 +151,10 @@ MonoBehaviour:
     y: 0
     width: 1236
     height: 460
-  m_MinSize: {x: 404, y: 224}
-  m_MaxSize: {x: 8004, y: 4024}
+  m_MinSize: {x: 406, y: 224}
+  m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 852
+  controlID: 2286
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -209,10 +209,10 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 393}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6cadffffe4e7ffffd6fbffff6c4f0000
+      m_ExpandedIDs: a09bffff6cadffffe4e7ffffd6fbffff6c4f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -434,19 +434,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/3D_Models/DAH_Tutorial/With Dates
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/3D_Models/DAH_Tutorial/With Dates
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Git_Projects\SpatioScholar_2018L\Unity_Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 38390000
-    m_LastClickedID: 14648
+    m_SelectedIDs: 0e390000
+    m_LastClickedID: 14606
     m_ExpandedIDs: 00000000760b0000a00b0000681e000064380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -500,8 +500,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 6aadffff68adffff66adffff64adffff62adffff60adffff5eadffff5cadffff5aadffff58adffff56adffff54adffff52adffff50adffff4eadffff4cadffff4aadffff48adffff46adffff44adffff42adffff40adffff3eadffff3cadffff3aadffff38adffff36adffff34adffff32adffff30adffff2eadffff2cadffff2aadffff28adffff26adffff24adffff22adffff20adffff1eadffff1cadffff
-    m_LastClickedInstanceID: -21142
+    m_SelectedInstanceIDs: 5276ffff
+    m_LastClickedInstanceID: -35246
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 5c0c00008e0c000000000000
     m_RenameOverlay:
@@ -575,8 +575,8 @@ MonoBehaviour:
     y: 0
     width: 684
     height: 947
-  m_MinSize: {x: 277, y: 74}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
