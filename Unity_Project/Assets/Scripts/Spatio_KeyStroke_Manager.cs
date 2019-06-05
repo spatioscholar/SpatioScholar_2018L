@@ -18,6 +18,7 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
     public bool highlightActive;
     public ViewController vcontroller;
     public GameObject manager;
+    public GameObject informationPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -111,6 +112,22 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
             //show Instructions Panel
         }
 
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            if (informationPanel.active == false)
+            {
+                informationPanel.SetActive(true);
+            }
+            else
+                if (informationPanel.active == true)
+            {
+                informationPanel.SetActive(false);
+            }
+        }
+
+
+
+
         //for highlighting objects and using their block value to cull the documents
         if (Input.GetKeyDown("a"))
         {
@@ -133,7 +150,11 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
                     //Debug.Log(objectHit.ToString());
                     try
                     {
-                        string BlockNumber = objectHit.GetComponent<SpatioModel>().block.ToString();
+                        SpatioModel temp = objectHit.GetComponent<SpatioModel>();
+                        string BlockNumber = temp.block.ToString();
+                        string StartDate = temp.start.Year.ToString();
+                        string EndDate = temp.end.Year.ToString();
+                        informationPanel.GetComponentInChildren<Text>().text = "Block " + BlockNumber + "\r\n" + StartDate + "   " + EndDate;
                         //Debug.Log(BlockNumber);
                         DocumentsPanel.GetComponent<SpatioDocuments>().ToggleButtonDisplay(BlockNumber);
 

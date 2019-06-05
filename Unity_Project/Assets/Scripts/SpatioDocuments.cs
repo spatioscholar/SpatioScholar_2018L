@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class SpatioDocuments : MonoBehaviour {
 
     public Toggle BlockMasterToggle;
+    public Toggle YearCullToggle;
     public SpatioDocuments DocumentsPanel;
     public GameObject temporaryNull;
+    public Text yearFromSlider;
+    public int currentPanelYear = 0;
 
     //this List, which is used to display documents should be populated with only the SpatioAssets keyed to the active "Block"
     List<SpatioButton> buttons;
@@ -59,7 +62,43 @@ public class SpatioDocuments : MonoBehaviour {
         }
     }
 
-    
+    public void CullDocumentsByYear()
+    {
+        string temp = yearFromSlider.text;
+        int sliderYear = int.Parse(temp);
+        //Debug.Log(sliderYear);
+
+        //if year culling is turned on, and the year is different
+        if ((YearCullToggle.isOn == true) && (currentPanelYear != sliderYear))
+        {
+            //Debug.Log("Bang");
+            foreach (SpatioButton b in buttons)
+            {
+                int DocYearStart = int.Parse(b.asset.GetComponent<SpatioAsset>().Startdate);
+                int DocYearEnd = int.Parse(b.asset.GetComponent<SpatioAsset>().Enddate);
+                Debug.Log(DocYearStart + " " + DocYearEnd);
+                //if the document is meant to be visible during these years
+                if ((DocYearStart <= sliderYear) && (DocYearEnd >= sliderYear))
+                {
+                    b.transform.SetParent(DocumentsPanel.transform, false);
+                    continue;
+                }
+                else
+                {
+                    //Debug.Log("not the same");
+                    //hide object by setting transform to a temporary object (not the panel)
+                    b.transform.SetParent(temporaryNull.transform, false);
+                    continue;
+                }
+
+            }
+            currentPanelYear = sliderYear;
+        }
+        
+        changed = true;
+    }
+
+
     //This method is fed by the Block Letter from the UI clicks
     public void ToggleButtonDisplay(string text)
     {
@@ -90,6 +129,7 @@ public class SpatioDocuments : MonoBehaviour {
         changed = true;
         //set the checkbox for all Blocks false
         BlockMasterToggle.isOn = false;
+        CullDocumentsByYear();
     }
 
     //What does this function do? 
@@ -146,5 +186,8 @@ public class SpatioDocuments : MonoBehaviour {
             UpdateButtons();
             changed = false;
         }
-	}
+        //better to call this from the slider, rather than on each Update call!
+        CullDocumentsByYear();
+
+    }
 }

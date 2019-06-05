@@ -26,9 +26,11 @@ public class SpatioAsset : MonoBehaviour {
     public Text rights;
     public Image infoPanelThumbnail;
     public string Block;
+    public string Startdate;
+    public string Enddate;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		imagePanel.SetPhoto(photo);
 		infoPanel.SetPhoto(photo);
         //infoPanel.transform.Find("Image").gameObject.GetComponent<RawImage>().texture = ;
@@ -82,6 +84,7 @@ public class SpatioAsset : MonoBehaviour {
                 dataCreator.text = imageCreator.text = s + ": " + dict[s];
             }else if (s == "Date")
             {
+                //Debug.Log(dict[s]);
                 date.text = s + ": " + dict[s];
             }else if (s == "Source")
             {
@@ -114,6 +117,18 @@ public class SpatioAsset : MonoBehaviour {
             {
                 //Debug.Log("Found Block identifier");
                 Block = dict[s];
+                //Debug.Log(dict[s]);
+            }
+            else if (s == "Start date")
+            {
+                Debug.Log("Found Start date identifier");
+                Startdate = dict[s];
+                //Debug.Log(dict[s]);
+            }
+            else if (s == "End date")
+            {
+                Debug.Log("Found End date identifier");
+                Enddate = dict[s];
                 //Debug.Log(dict[s]);
             }
         }
