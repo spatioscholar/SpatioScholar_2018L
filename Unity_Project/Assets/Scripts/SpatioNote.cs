@@ -53,6 +53,7 @@ public class SpatioNote : MonoBehaviour
         transform.LookAt(cam.transform);
         this.transform.Rotate(0,180,0);
 
+        /*
         if(uiGlobalVisible == true && uiVisible == false)
         {
             ui.gameObject.SetActive(true);
@@ -62,10 +63,12 @@ public class SpatioNote : MonoBehaviour
         {
             return;
         }
+        */
     }
 
     void OnMouseEnter()
     {
+        /*
         //Debug.Log("OnMouseEnter");
         if (uiVisible == true)
         {
@@ -77,9 +80,11 @@ public class SpatioNote : MonoBehaviour
             uiVisible = true;
             return;
         }
+        */
     }
     void OnMouseExit()
     {
+        /*
         //Debug.Log("OnMouseExit");
         if (uiVisible == true && uiGlobalVisible == false)
         {
@@ -99,6 +104,7 @@ public class SpatioNote : MonoBehaviour
             uiVisible = false;
             return;
         }
+        */
     }
     void SetOngoingVisible(bool input)
     {
@@ -107,6 +113,7 @@ public class SpatioNote : MonoBehaviour
     }
     void OnMouseDown()
     {
+        
         /*
         if(viewNotePanel == null)
         {
@@ -120,6 +127,7 @@ public class SpatioNote : MonoBehaviour
         //ok, but now this window needs to be populated with the correct information.
         */
 
+        /*
         //Debug.Log("OnMouseDown");
         if (uiGlobalVisible == false)
         {
@@ -131,6 +139,7 @@ public class SpatioNote : MonoBehaviour
             SetOngoingVisible(false);
             uiVisible = false;
         }
+        */
 
     }
 }

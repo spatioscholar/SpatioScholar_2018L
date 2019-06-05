@@ -27,6 +27,7 @@ public class NotesPanel : MonoBehaviour {
     GameObject viewportLocation;
     int eraseCounter = 0;
     GameObject LocationMarker;
+    private bool isRunning = false;
 
     // Use this for initialization
     void Start () {
@@ -36,19 +37,7 @@ public class NotesPanel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-   
-        if (eraseCounter == 10)
-        {
-            eraseCounter = 0;
-            try {
-                LocationMarker = null;
-            }
-            catch
-            {
-
-            }
-        }
-        eraseCounter++;
+  
    	}
 
     public void BeginDrag()
@@ -76,24 +65,19 @@ public class NotesPanel : MonoBehaviour {
         Vector3 location = new Vector3(float.Parse(xField.text), float.Parse(yField.text), float.Parse(zField.text));
         manager.AddNote(firstField.text, lastField.text, briefField.text, 
                         fullField.text, URLField.text, date, location);
+
         //trying to erase the temporary location maker used to mark the spot for the note
-        LocationMarker = null;
-        Destroy(LocationMarker);
+        //Destroy(LocationMarker);
+        //LocationMarker.SetActive(false);
     }
 
-    public void NoteLocation()
-    {
-        //raycast a location
-        //wait for a mouse click
-        //raycast coordinates from that location
-        //put that location back into the Add Notes Fields
-    }
-    private bool isRunning = false;
     public void Wrapper()
     {
         if (isRunning == false)
         {
             StartCoroutine(WaitForLocationPick());
+            Destroy(LocationMarker);
+            //LocationMarker.SetActive(false);
         }
     }
 
@@ -145,7 +129,7 @@ public class NotesPanel : MonoBehaviour {
                 }
                 
             }
-            Debug.Log("yield return null");
+            //Debug.Log("yield return null");
             yield return null;
         }
         //not here yield return null;

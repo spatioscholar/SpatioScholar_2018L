@@ -41,7 +41,7 @@ public class ViewNotesPanel : MonoBehaviour
 
     public void ToggleNoteVisibility()
     {
-        Debug.Log("ToggleNoteVisibility method called");
+        //Debug.Log("ToggleNoteVisibility method called");
         if(NoteVisibility == false)
         {
             ShowNotesInViewport();
@@ -58,7 +58,7 @@ public class ViewNotesPanel : MonoBehaviour
     //This is a limiting feature
     public void ShowNotesInViewport()
     {
-        Debug.Log("ShowNotesInViewport method called");
+        //Debug.Log("ShowNotesInViewport method called");
         //turn on all notes
         for (int i = 0; i < VisibleNoteObjects.Count; i++)
         {
@@ -69,7 +69,7 @@ public class ViewNotesPanel : MonoBehaviour
     //This method should be called to turn "off" the display of notes
     public void HideNotesInViewport()
     {
-        Debug.Log("HideNotesInViewport method called");
+        //Debug.Log("HideNotesInViewport method called");
         //turn off all notes
         for (int i = 0; i < VisibleNoteObjects.Count; i++)
         {
@@ -129,16 +129,22 @@ public class ViewNotesPanel : MonoBehaviour
         //Debug.Log("running UpdateNotes");
         int children = canvas.transform.childCount;
         //Debug.Log(children);
+
+        int counter = 1;
+        //For each downloaded NOTE
         foreach (JSONNode n in node.AsArray)
         {
             //Debug.Log("running UpdateNotes for each node in the node array "+n);
             DateTime postTime = DateTime.ParseExact(n["posttime"], "yyyy-MM-dd HH:mm:ss", null);
-            //if (postTime <= lastUpdate)
+            
+            /*
             if (postTime >= lastUpdate)
             {
                 //Debug.Log(postTime + " <= " + lastUpdate);
                 continue;
             }
+            */
+
             GameObject blurb = Instantiate<GameObject>(blurbResource);
             NoteBlurb b = blurb.GetComponent<NoteBlurb>();
             b.Setup(view, n["first"], n["last"], n["brief"], n["full"], n["url"], new Vector3(n["x"], n["y"], n["z"]),
@@ -160,12 +166,11 @@ public class ViewNotesPanel : MonoBehaviour
             Note.GetComponent<SpatioNote>().textFieldFull.text = ("Full Description: " + (n["full"]));
             Note.GetComponent<SpatioNote>().timestamp = postTime.ToString();
             Note.GetComponent<SpatioNote>().textFieldTimeStamp.text = ("Note Time: " + postTime.ToString());
-
-
-            //Debug.Log("adding the latest visual note object to the VisibleNoteObjects List");
+            Debug.Log("adding visual note object "+counter);
             VisibleNoteObjects.Add(Note);
             Note.SetActive(false);
             NoteCount++;
+            counter++;
             //Debug.Log("added note" + Note.GetComponent<SpatioNote>().brief);
 
             blurb.transform.SetParent(canvas.transform);

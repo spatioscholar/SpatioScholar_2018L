@@ -102,6 +102,7 @@ public class DBLoader : MonoBehaviour {
     }
     public IEnumerator UpdateTime()
     {
+        Debug.Log("Running DB UpdateTime Method");
         WWWForm form = new WWWForm();
         form.AddField("operation", "status");
         WWW site = new WWW(dbSource, form);
@@ -196,6 +197,7 @@ public class DBLoader : MonoBehaviour {
         //viewNotes.UpdateNotes(node["data"], lastUpdate);
         for (int i = 0; i < node.Count; i++)
         {
+            Debug.Log("retrieving note " + i);
             //the latest note retrieved has it's post time saved into lastUpdate
             lastUpdate = DateTime.ParseExact(node[i]["posttime"], "yyyy-MM-dd HH:mm:ss", null);
         }

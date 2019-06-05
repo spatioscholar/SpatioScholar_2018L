@@ -121,13 +121,13 @@ public class SpatioAsset : MonoBehaviour {
             }
             else if (s == "Start date")
             {
-                Debug.Log("Found Start date identifier");
+                //Debug.Log("Found Start date identifier");
                 Startdate = dict[s];
                 //Debug.Log(dict[s]);
             }
             else if (s == "End date")
             {
-                Debug.Log("Found End date identifier");
+                //Debug.Log("Found End date identifier");
                 Enddate = dict[s];
                 //Debug.Log(dict[s]);
             }
