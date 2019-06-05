@@ -5,8 +5,14 @@ using UnityEngine.UI;
 
 public class SpatioNote : MonoBehaviour
 {
-    public Text textField;
+    public Text textFieldName;
+    public string name;
+    public Text textFieldBrief;
     public string brief;
+    public Text textFieldFull;
+    public string full;
+    public Text textFieldTimeStamp;
+    public string timestamp;
     public Canvas ui;
     public bool uiVisible = false;
     public GameObject cam;
@@ -101,7 +107,7 @@ public class SpatioNote : MonoBehaviour
     }
     void OnMouseDown()
     {
-        
+        /*
         if(viewNotePanel == null)
         {
             GameObject uiPlaceholder = manager.transform.Find("UI").gameObject;
@@ -112,6 +118,7 @@ public class SpatioNote : MonoBehaviour
         
         viewNotePanel.SetActive(true);
         //ok, but now this window needs to be populated with the correct information.
+        */
 
         //Debug.Log("OnMouseDown");
         if (uiGlobalVisible == false)

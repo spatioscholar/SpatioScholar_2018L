@@ -96,7 +96,7 @@ public class Spatio_KeyStroke_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.BackQuote))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             if(Instructions.active == false)
             {

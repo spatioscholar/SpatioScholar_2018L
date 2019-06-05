@@ -98,8 +98,8 @@ public class ViewNotesPanel : MonoBehaviour
             {
 
             }
-            Debug.Log("Destroy " + children);
-            Debug.Log(canvas.transform.childCount);
+            //Debug.Log("Destroy " + children);
+            //Debug.Log(canvas.transform.childCount);
         }
     }
 
@@ -108,7 +108,7 @@ public class ViewNotesPanel : MonoBehaviour
     {
         if(dbloader == null)
         {
-            Debug.Log("CallUpdateNotes");
+            //Debug.Log("CallUpdateNotes");
             //Assign ViewController object
             manager = GameObject.Find("SpatioManager");
             dbloader = manager.GetComponent<DBLoader>();
@@ -141,9 +141,7 @@ public class ViewNotesPanel : MonoBehaviour
             }
             GameObject blurb = Instantiate<GameObject>(blurbResource);
             NoteBlurb b = blurb.GetComponent<NoteBlurb>();
-            b.Setup(view, n["first"], n["last"], n["brief"],
-                    n["full"], n["url"],
-                    new Vector3(n["x"], n["y"], n["z"]),
+            b.Setup(view, n["first"], n["last"], n["brief"], n["full"], n["url"], new Vector3(n["x"], n["y"], n["z"]),
                     postTime,
                     DateTime.ParseExact(n["reftime"], "yyyy-MM-dd HH:mm:ss", null));
 
@@ -153,10 +151,20 @@ public class ViewNotesPanel : MonoBehaviour
             //Add viewport note in the scene
             GameObject Note = Instantiate<GameObject>(viewportNote);
             Note.transform.position = ((new Vector3(n["x"], n["y"], n["z"])));
+            //Populate vieport note text fields with the proper info from the DB
             Note.GetComponent<SpatioNote>().brief = (n["brief"]);
-            Note.GetComponent<SpatioNote>().textField.text = (n["brief"]);
+            Note.GetComponent<SpatioNote>().textFieldBrief.text = ("Brief Description: " + (n["brief"]));
+            Note.GetComponent<SpatioNote>().name = (n["last"]);
+            Note.GetComponent<SpatioNote>().textFieldName.text = ("Name: " + (n["last"]));
+            Note.GetComponent<SpatioNote>().full = (n["full"]);
+            Note.GetComponent<SpatioNote>().textFieldFull.text = ("Full Description: " + (n["full"]));
+            Note.GetComponent<SpatioNote>().timestamp = postTime.ToString();
+            Note.GetComponent<SpatioNote>().textFieldTimeStamp.text = ("Note Time: " + postTime.ToString());
+
+
             //Debug.Log("adding the latest visual note object to the VisibleNoteObjects List");
             VisibleNoteObjects.Add(Note);
+            Note.SetActive(false);
             NoteCount++;
             //Debug.Log("added note" + Note.GetComponent<SpatioNote>().brief);
 

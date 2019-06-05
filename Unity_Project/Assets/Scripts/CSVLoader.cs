@@ -12,6 +12,7 @@ public class CSVLoader : MonoBehaviour {
     public SpatioDocuments DocumentsPanel;
     public string webAddress;
     public Canvas UI;
+
 	// Use this for initialization
 	IEnumerator Start () {
 
@@ -25,15 +26,17 @@ public class CSVLoader : MonoBehaviour {
         //commenting this out, it dumps the contents into the console
         //Debug.Log(site.text);       
         string CSVText;
-        CSVText = site.text;;
+        CSVText = site.text;
+        //Debug.Log(site.text);
         fgCSVReader.LoadFromString(CSVText, LoadData);
-
+        
     }
 
 	void LoadData (int line_number, List<string> line)
 	{
 		if (line_number == 0)
 		{
+            //builds a new data structure at the start of the stream
             fieldList = new List<string>(line);
 		
 		}else
@@ -41,8 +44,10 @@ public class CSVLoader : MonoBehaviour {
 		    Dictionary<string, string> csvData = new Dictionary<string, string>();
 		    for (int i = 0; i < fieldList.Count; i++)
 		    {
-		        if (fieldList[i] == "")
+		        
+                    if (fieldList[i] == "")
 		            continue;
+                    
 		        if (i >= line.Count)
 		        {
                     //Debug.Log("Adding <" + fieldList[i] + ", (Empty)>");
@@ -50,8 +55,11 @@ public class CSVLoader : MonoBehaviour {
 		        }else{
 		            //Debug.Log("Adding <" + fieldList[i] + ", " + line[i] + ">");
 		            csvData.Add(fieldList[i], line[i]);
-		        }
+                    //Debug.Log(line[i]);
+                }
 		    }
+            //Debug.Log(fieldList);
+
                 
             //Create a spatioasset and spatiobutton
             //For storing and displaying Documents
@@ -80,9 +88,11 @@ public class CSVLoader : MonoBehaviour {
                 assetRect.offsetMax = new Vector2((Screen.width + 381) / 2, -(Screen.height - 275) / 2);
                 button.transform.SetParent(DocumentsPanel.transform, false);
                 //Associate them with the UI
+                //starts a coroutine to find the image file online?
                 StartCoroutine(fetchSource(asset, button, csvData["Host"]));
                 //populates the asset fields with the metadata from the csv
                 asset.SetAssetFields(csvData);
+
                 //asset.gameObject.SetActive(false);
             }
 

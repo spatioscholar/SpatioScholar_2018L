@@ -25,6 +25,7 @@ public class SpatioAsset : MonoBehaviour {
     public Text description;
     public Text rights;
     public Image infoPanelThumbnail;
+    public string Block;
 
 	// Use this for initialization
 	void Start () {
@@ -69,10 +70,12 @@ public class SpatioAsset : MonoBehaviour {
 
     public void SetAssetFields(Dictionary<string,string> dict)
     {
-        foreach (string s in dict.Keys)
+
+            foreach (string s in dict.Keys)
         {
             if (s == "Title")
             {
+                //Debug.Log(dict[s]);
                 title.text = dict[s];
             }else if (s == "Creator/Author")
             {
@@ -100,10 +103,18 @@ public class SpatioAsset : MonoBehaviour {
             {
                 //need to make the Description field that text goes into scrollable
                 description.text = s + ": " + dict[s];
+                //Debug.Log("Found Description identifier upon import of CSV file = " + dict[s]);
             }
             else if (s == "Rights")
             {
                 rights.text = s + ": " + dict[s];
+                //Debug.Log("Found Rights identifier upon import of CSV file = " + dict[s]);
+            }
+            else if (s == "Block")
+            {
+                //Debug.Log("Found Block identifier");
+                Block = dict[s];
+                //Debug.Log(dict[s]);
             }
         }
     }

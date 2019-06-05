@@ -69,8 +69,9 @@ public class SpatioDocuments : MonoBehaviour {
         //Debug.Log("culling method with tag = " + text);
         foreach (SpatioButton b in buttons)
         {
-            string foundBlock = b.asset.GetComponent<SpatioAsset>().title.text.ToString();
-            //Debug.Log("Found Block Title = "+foundBlock);
+            //string foundBlock = b.asset.GetComponent<SpatioAsset>().title.text.ToString();
+            string foundBlock = b.asset.GetComponent<SpatioAsset>().Block.ToString();
+            Debug.Log("Found Block Title = "+foundBlock);
             if ((foundBlock == text) || (foundBlock == ("Block " + text)))
             {
                 //Debug.Log("found a button with the same title");

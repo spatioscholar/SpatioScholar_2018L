@@ -43,6 +43,7 @@ ModelImporter:
     100074: Site_019
     100076: Site_020
     100078: Street
+    100080: Edge
     400000: Building_002
     400002: Building_003
     400004: Building_004
@@ -83,6 +84,7 @@ ModelImporter:
     400074: Site_019
     400076: Site_020
     400078: Street
+    400080: Edge
     2100000: No Name
     2300000: Building_002
     2300002: Building_003
@@ -123,6 +125,7 @@ ModelImporter:
     2300072: Site_019
     2300074: Site_020
     2300076: Street
+    2300078: Edge
     3300000: Building_002
     3300002: Building_003
     3300004: Building_004
@@ -162,6 +165,7 @@ ModelImporter:
     3300072: Site_019
     3300074: Site_020
     3300076: Street
+    3300078: Edge
     4300000: Street
     4300002: Site_002
     4300004: Site_003
@@ -201,6 +205,7 @@ ModelImporter:
     4300072: Building_018
     4300074: Building_019
     4300076: Building_020
+    4300078: Edge
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}

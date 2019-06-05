@@ -65,7 +65,6 @@ public class NotesPanel : MonoBehaviour {
     //this calls the routine that adds a new note to the database through the SpatioManager
     public void AddNote()
     {
-        
         int Day, Month, Year;
         if ((Day = int.Parse(dayField.text)) < 1 || Day > 31)
             return;
@@ -77,6 +76,9 @@ public class NotesPanel : MonoBehaviour {
         Vector3 location = new Vector3(float.Parse(xField.text), float.Parse(yField.text), float.Parse(zField.text));
         manager.AddNote(firstField.text, lastField.text, briefField.text, 
                         fullField.text, URLField.text, date, location);
+        //trying to erase the temporary location maker used to mark the spot for the note
+        LocationMarker = null;
+        Destroy(LocationMarker);
     }
 
     public void NoteLocation()
