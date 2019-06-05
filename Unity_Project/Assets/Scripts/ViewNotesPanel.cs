@@ -20,7 +20,7 @@ public class ViewNotesPanel : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("running start routine for ViewNotesPanel");
+        //Debug.Log("running start routine for ViewNotesPanel");
         //Assign ViewController object
         manager = GameObject.Find("SpatioManager");
         dbloader = manager.GetComponent<DBLoader>();
